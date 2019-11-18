@@ -15,7 +15,9 @@ function App() {
     username: '',
     email: ''
   });
+  
   const { username, email } = inputs;
+
   const onChange = e => {
     const { name, value } = e.target;
     setInputs({
