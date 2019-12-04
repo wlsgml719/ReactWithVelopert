@@ -1,4 +1,4 @@
-import React, {useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 // 여러개의 상태를 관리할 때는 useState를 가져와서 객체형태로 사용한다.
 import logo from './logo.svg';
 import './App.css';
@@ -26,13 +26,13 @@ function App() {
     });
   };
 
-  const users = [
+  const [users, setUsers] = useState([
       {
           id      : 1,
           username    : 'jinhee',
           email   : 'jinhee@email.com'
       },
-      {
+      { 
           id      : 2,
           username    : 'seoyoung',
           email   : 'seoyoung@email.com'
@@ -42,16 +42,22 @@ function App() {
           username    : 'boryung',
           email   : 'boryung@email.com'
       }
-  ];
+  ]);
 
   const nextId    = useRef(4);
   const onCreate  = () => {
     setInputs({
-      usernanme: '',
+      username: '',
       email: ''
     });
     nextId.current += 1;
-  }
+  };
+  
+  const onRemove = id => {
+    setUsers(users.filter(user => user.id !== id));
+    // id 값이    
+  };
+  
   return (
     // <Wrapper>
     //     <Hello color="white" isSpecial={true}/>
@@ -66,7 +72,7 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList users={users}/>
+      <UserList users={users} onRemove={onRemove}/>
     </>
   );
 }

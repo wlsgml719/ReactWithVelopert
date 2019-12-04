@@ -1,11 +1,11 @@
 import React from 'react';
 
-function User({user})
+function User({ user, onRemove })
 {
     const { username, email, id } = user;
     return(
         <div>
-            <b>{name}</b>
+            <b>{username}</b>
             <span>({email})</span>
             <button onClick={() => onRemove(id)}> 삭제하기</button>
         </div>
@@ -18,7 +18,7 @@ function UserList({ users, onRemove })
         <div>
             {
                 users.map(
-                    user => ( 
+                    (user, index) => ( 
                         <User 
                             user={user} 
                             key={user.id}
