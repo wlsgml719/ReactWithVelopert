@@ -7,8 +7,10 @@ function User({ user, onRemove, onToggle })
 
     return(
         <div>
-            <b style={{
-                    color: online ? 'green' : 'black',
+            <b
+                style={{
+                    color: online ? 'red' : 'black',
+                    backgroundColor: online ? 'pink' : 'white',
                     cursor: 'pointer'
                 }}
                 onClick={() => onToggle(id)}

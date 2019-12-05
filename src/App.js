@@ -42,7 +42,7 @@ function App() {
       {
           id      : 3,
           username    : 'boryung',
-          email   : 'boryung@email.com',
+          email   : 'boryeng@email.com',
           online  : false
       }
   ]);
@@ -61,12 +61,11 @@ function App() {
   };
   
   const onToggle = id => {
-   // 아이디가 일치한다면 업데이트
-   setUsers(users.map(
-      user => user.id === id
-        ? {...user, online: !user.online}
-        : user
-      ))
+    setUsers(users.map(user => 
+      user.id === id
+      ? { ...user, online: !user.online }
+      : user
+    ))
   }
 
   return (
