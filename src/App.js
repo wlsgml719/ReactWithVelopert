@@ -30,17 +30,20 @@ function App() {
       {
           id      : 1,
           username    : 'jinhee',
-          email   : 'jinhee@email.com'
+          email   : 'jinhee@email.com',
+          online  : true
       },
       { 
           id      : 2,
           username    : 'seoyoung',
-          email   : 'seoyoung@email.com'
+          email   : 'seoyoung@email.com',
+          online  : false
       },
       {
           id      : 3,
           username    : 'boryung',
-          email   : 'boryung@email.com'
+          email   : 'boryung@email.com',
+          online  : false
       }
   ]);
 
@@ -55,9 +58,17 @@ function App() {
   
   const onRemove = id => {
     setUsers(users.filter(user => user.id !== id));
-    // id 값이    
   };
   
+  const onToggle = id => {
+   // 아이디가 일치한다면 업데이트
+   setUsers(users.map(
+      user => user.id === id
+        ? {...user, online: !user.online}
+        : user
+      ))
+  }
+
   return (
     // <Wrapper>
     //     <Hello color="white" isSpecial={true}/>
@@ -72,7 +83,7 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList users={users} onRemove={onRemove}/>
+      <UserList users={users} onRemove={onRemove} onToggle={onToggle}/>
     </>
   );
 }

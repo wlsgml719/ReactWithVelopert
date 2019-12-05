@@ -1,18 +1,26 @@
 import React from 'react';
+import { green, black } from 'ansi-colors';
 
-function User({ user, onRemove })
+function User({ user, onRemove, onToggle })
 {
-    const { username, email, id } = user;
+    const { username, email, id, online } = user;
+
     return(
         <div>
-            <b>{username}</b>
+            <b style={{
+                    color: online ? 'green' : 'black',
+                    cursor: 'pointer'
+                }}
+                onClick={() => onToggle(id)}
+            >{username}</b>
             <span>({email})</span>
+            &nbsp;
             <button onClick={() => onRemove(id)}> 삭제하기</button>
         </div>
     )
 }
 
-function UserList({ users, onRemove })
+function UserList({ users, onRemove, onToggle })
 {
     return(
         <div>
@@ -23,6 +31,7 @@ function UserList({ users, onRemove })
                             user={user} 
                             key={user.id}
                             onRemove={onRemove}
+                            onToggle={onToggle}
                         />
                     ) 
                 )
