@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { green, black } from 'ansi-colors';
 
 function User({ user, onRemove, onToggle })
 {
     const { username, email, id, online } = user;
+
+    useEffect(() => {
+        console.log('user값이 설정됨')
+        console.log(user);
+        return () => {
+            console.log('user값이 변경되기 전');
+            console.log(user);
+        }
+    }, [user])
 
     return(
         <div>

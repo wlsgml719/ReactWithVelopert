@@ -66,8 +66,13 @@ function App() {
       ? { ...user, online: !user.online }
       : user
     ))
-  }
+  };
 
+  const countOnlineUser = (users) => {
+    console.log('활성 사용자 수를 세는 중');
+    return users.filter(user => user.online).length;
+  };
+  const count = countOnlineUser(users);
   return (
     // <Wrapper>
     //     <Hello color="white" isSpecial={true}/>
@@ -82,7 +87,8 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList users={users} onRemove={onRemove} onToggle={onToggle}/>
+      <div>활성사용자수: {count}</div>
+      <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
     </>
   );
 }
